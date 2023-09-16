@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="display-4">Tag Slider</h3>
+      <app-tag-slider
+        [tags]="tags"
+        (onSelect)="selectedTab($event)"
+      ></app-tag-slider>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3 class="display-4">Image Slider</h3>
+      <app-image-slider
+        [tags]="tags"
+        (onSelect)="selectedTab($event)"
+      ></app-image-slider>
+    </div>
+  </div>
+</div>
