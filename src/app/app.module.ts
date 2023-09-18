@@ -8,9 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TagSliderComponent } from './tag-slider/tag-slider.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [TableOverviewExample, TagSliderComponent, ImageSliderComponent],
+  declarations: [TableOverviewExample, TagSliderComponent, ImageSliderComponent, CardComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

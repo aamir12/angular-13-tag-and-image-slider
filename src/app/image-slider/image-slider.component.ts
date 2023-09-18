@@ -1,3 +1,4 @@
+import { CdkDropListGroup } from '@angular/cdk/drag-drop';
 import {
   Component,
   ElementRef,
@@ -19,8 +20,10 @@ import {
 export class ImageSliderComponent implements AfterViewInit {
   @ViewChild('tabsList') tabsList!: ElementRef;
   @ViewChildren('tagElement') tagElements!: QueryList<ElementRef>;
-  @Input('tags') tags: string[] = [];
-  @Output('onSelect') onSelect = new EventEmitter<string>();
+  @Input('data') data: any[] = [];
+
+  @Input('contentType') contentType!: 'video' | 'document';
+  emptyClickHandler() {}
 
   dragging = false;
   showLeftArrow = false;
@@ -38,7 +41,7 @@ export class ImageSliderComponent implements AfterViewInit {
 
   selectTab(index: number, tag: string): void {
     this.activeTabIndex = index;
-    this.onSelect.emit(tag);
+
     const selectedTag = this.tagElements.filter((_, i) => i === index)[0]
       .nativeElement;
 
@@ -79,7 +82,7 @@ export class ImageSliderComponent implements AfterViewInit {
   }
 
   manageIcons(): void {
-    if (!this.tabsList || this.tags.length === 0) {
+    if (!this.tabsList || this.data.length === 0) {
       return;
     }
 
@@ -118,5 +121,9 @@ export class ImageSliderComponent implements AfterViewInit {
       this.dragging = false;
       this.isDragging = false;
     }
+  }
+
+  openTutorial(d: any) {
+    window.open(d.YoutubeUrl, '_blank');
   }
 }

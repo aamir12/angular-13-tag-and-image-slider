@@ -1,4 +1,4 @@
-<ng-container *ngIf="tags.length > 0">
+<ng-container *ngIf="data.length > 0">
   <div class="scrollable-tabs-container">
     <div
       class="left-arrow"
@@ -28,8 +28,8 @@
       (mousedown)="onMousedown($event)"
       [class.dragging]="isDragging"
     >
-      <li *ngFor="let tag of tags; let i = index" #tagElement>
-        <div class="card" (click)="selectTab(i, tag)">
+      <li *ngFor="let d of data; let i = index" #tagElement>
+        <!-- <div class="card" (click)="selectTab(i, tag)">
           <img
             src="https://dummyimage.com/600x400/000/fff"
             class="card-img-top"
@@ -42,7 +42,21 @@
             </p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-        </div>
+        </div> -->
+
+        <app-card
+          [title]="d.Title"
+          [description]="d.Body"
+          [type]="contentType"
+          [clickHandler]="
+            contentType === 'video'
+              ? openTutorial.bind(this, d)
+              : emptyClickHandler
+          "
+          [imagePath]="d.ImagePath"
+          [isSlider]="true"
+        >
+        </app-card>
       </li>
     </ul>
 

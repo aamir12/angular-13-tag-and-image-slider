@@ -13,8 +13,8 @@
     <div class="col">
       <h3 class="display-4">Image Slider</h3>
       <app-image-slider
-        [tags]="tags"
-        (onSelect)="selectedTab($event)"
+        [contentType]="'video'"
+        [data]="videos"
       ></app-image-slider>
     </div>
   </div>

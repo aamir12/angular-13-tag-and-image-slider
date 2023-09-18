@@ -1,0 +1,35 @@
+.video:hover {
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.playIcon {
+  display: none;
+}
+
+.video:hover .playIcon {
+  display: block;
+}
+
+.defaultSize {
+  width: 263px;
+  height: 224px;
+}
+
+.btn-download,
+.btn-download:hover {
+  background-color: #004990;
+  color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .defaultSize {
+    width: 100%;
+    height: auto;
+  }
+
+  .slider .defaultSize {
+    width: 263px;
+    height: 224px;
+  }
+}
