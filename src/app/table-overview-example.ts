@@ -24,7 +24,7 @@ export class TableOverviewExample {
 
   videos = [
     {
-      Title: 'Title1',
+      Title: 'Title1 lorem ipsum content greater than text',
       Body: 'Body1',
       ImagePath: 'https://dummyimage.com/600x400/000/fff',
 

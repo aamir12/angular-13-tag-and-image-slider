@@ -66,6 +66,10 @@
   justify-content: flex-end;
 }
 
+:host ::ng-deep .card:first-child {
+  padding-left: 0px !important;
+}
+
 // .scrollable-tabs-container svg:hover {
 //   background: #333;
 //   color: #fff;

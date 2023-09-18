@@ -27,10 +27,20 @@
   </div>
 
   <div class="card-body px-0">
-    <h5 class="card-title fs-6 text-wrap" *ngIf="title">
+    <h5
+      class="card-title fs-6"
+      *ngIf="title"
+      [class.text-truncate]="isSlider"
+      [class.text-wrap]="!isSlider"
+    >
       {{ title }}
     </h5>
-    <p class="card-text fw-normal lh-base text-wrap" *ngIf="description">
+    <p
+      class="card-text fw-normal lh-base"
+      *ngIf="description"
+      [class.text-truncate]="isSlider"
+      [class.text-wrap]="!isSlider"
+    >
       {{ description }}
     </p>
   </div>
