@@ -53,6 +53,16 @@ export class TableOverviewExample {
     },
   ];
 
+  d = {
+    Title: 'Title4',
+    Body: 'Body4',
+    ImagePath: 'https://dummyimage.com/600x400/000/fff',
+    docPath: 'https://dummyimage.com/600x400/000/fff',
+    YoutubeUrl: 'https://www.youtube.com/watch?v=nS5qbSJLGx8',
+  };
+
+  list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   selectedTab(e: string) {
     console.log(e);
   }

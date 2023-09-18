@@ -19,3 +19,17 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-4 col-lg-3" *ngFor="t in list">
+    <app-card
+      [title]="d.Title"
+      [description]="d.Body"
+      [type]="'video'"
+      [imagePath]="d.ImagePath"
+      [isSlider]="true"
+      [docPath]="d.docPath"
+    >
+    </app-card>
+  </div>
+</div>
