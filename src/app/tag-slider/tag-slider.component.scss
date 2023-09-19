@@ -1,5 +1,5 @@
 .scrollable-tabs-container {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: transparent;
   max-width: 100%;
   margin: 16px auto;
@@ -9,9 +9,10 @@
 }
 
 .scrollable-tabs-container svg {
-  width: 24px;
-  height: 24px;
-  padding: 8px;
+  width: 38px;
+  height: 38px;
+  padding: 6px;
+  z-index: 5;
   cursor: pointer;
   color: #000;
   border-radius: 50%;
@@ -42,19 +43,16 @@
   display: none;
 }
 
-.scrollable-tabs-container li {
-  cursor: pointer;
-}
-
 .scrollable-tabs-container a {
   color: #fff;
   text-decoration: none;
   background: #babbbb;
-  padding: 4px 24px;
+  padding: 2px 15px;
   display: inline-block;
   border-radius: 4px;
   user-select: none;
   white-space: nowrap;
+  font-size: 14px;
   pointer-events: none;
 }
 
@@ -71,7 +69,8 @@
   top: 0;
   display: none;
   align-items: center;
-  padding: 0 10px;
+  z-index: 99;
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -82,15 +81,17 @@
 
 .scrollable-tabs-container .right-arrow {
   right: 0;
-  background: linear-gradient(to left, #fff 10%, transparent);
+  background: linear-gradient(to left, #f0f0f0 10%, transparent);
   justify-content: flex-end;
 }
 
 .scrollable-tabs-container .left-arrow {
-  background: linear-gradient(to right, #fff 10%, transparent);
+  background: linear-gradient(to right, #f0f0f0 10%, transparent);
 }
 
-// .scrollable-tabs-container svg:hover {
-//   background: #333;
-//   color: #fff;
-// }
+/*
+.scrollable-tabs-container svg:hover {
+  background: #333;
+   color: #fff;
+}
+*/
