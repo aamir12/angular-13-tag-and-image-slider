@@ -1,11 +1,8 @@
-import { CdkDropListGroup } from '@angular/cdk/drag-drop';
 import {
   Component,
   ElementRef,
   ViewChild,
   AfterViewInit,
-  Output,
-  EventEmitter,
   Input,
   ViewChildren,
   QueryList,
@@ -19,15 +16,12 @@ import {
 })
 export class ImageSliderComponent implements AfterViewInit {
   @ViewChild('tabsList') tabsList!: ElementRef;
-  @ViewChildren('tagElement') tagElements!: QueryList<ElementRef>;
+  @ViewChildren('sliderElements') sliderElements!: QueryList<ElementRef>;
   @Input('data') data: any[] = [];
 
   @Input('contentType') contentType!: 'video' | 'document';
   emptyClickHandler() {}
-
-  dragging = false;
   showLeftArrow = false;
-  isDragging = false;
   showRightArrow = false;
   activeTabIndex: number = 0;
 
@@ -39,10 +33,13 @@ export class ImageSliderComponent implements AfterViewInit {
     }, 0);
   }
 
-  selectTab(index: number, tag: string): void {
+  selectCard(index: number): void {
+    if(this.data.length === 0) {
+      return;
+    }
     this.activeTabIndex = index;
 
-    const selectedTag = this.tagElements.filter((_, i) => i === index)[0]
+    const selectedTag = this.sliderElements.filter((_, i) => i === index)[0]
       .nativeElement;
 
     if (this.tabsList && selectedTag) {
@@ -82,7 +79,7 @@ export class ImageSliderComponent implements AfterViewInit {
   }
 
   manageIcons(): void {
-    if (!this.tabsList || this.data.length === 0) {
+    if (this.data.length === 0) {
       return;
     }
 
@@ -102,24 +99,6 @@ export class ImageSliderComponent implements AfterViewInit {
       this.showRightArrow = false;
     } else {
       this.showRightArrow = true;
-    }
-  }
-
-  onMousemove(event: MouseEvent) {
-    if (!this.dragging) return;
-    this.isDragging = true;
-    this.tabsList.nativeElement.scrollLeft -= event.movementX;
-  }
-
-  onMousedown(event: MouseEvent) {
-    this.dragging = true;
-  }
-
-  @HostListener('document:mouseup', ['$event'])
-  onMouseUp(event: MouseEvent) {
-    if (this.el.nativeElement.contains(event.target)) {
-      this.dragging = false;
-      this.isDragging = false;
     }
   }
 

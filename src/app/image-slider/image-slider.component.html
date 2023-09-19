@@ -23,27 +23,8 @@
 
     <ul
       #tabsList
-      (scroll)="manageIcons()"
-      (mousemove)="onMousemove($event)"
-      (mousedown)="onMousedown($event)"
-      [class.dragging]="isDragging"
-    >
-      <li *ngFor="let d of data; let i = index" #tagElement>
-        <!-- <div class="card" (click)="selectTab(i, tag)">
-          <img
-            src="https://dummyimage.com/600x400/000/fff"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div> -->
-
+      (scroll)="manageIcons()">
+      <li *ngFor="let d of data; let i = index" #sliderElements (click)="selectCard(i)">
         <app-card
           [title]="d.Title"
           [description]="d.Body"

@@ -1,7 +1,9 @@
 <div class="container">
+
+  <!-- Tag Slider -->
   <div class="row">
     <div class="col">
-      <h3 class="display-4">Tag Slider</h3>
+      <h3>Tag Slider</h3>
       <app-tag-slider
         [tags]="tags"
         (onSelect)="selectedTab($event)"
@@ -9,27 +11,45 @@
     </div>
   </div>
 
+  <!-- Image Slider -->
   <div class="row">
     <div class="col">
-      <h3 class="display-4">Image Slider</h3>
+      <h3>Image Slider</h3>
       <app-image-slider
         [contentType]="'video'"
         [data]="videos"
       ></app-image-slider>
     </div>
   </div>
-</div>
+
+<!-- Doc Slider -->
 
 <div class="row">
-  <div class="col-md-4 col-lg-3" *ngFor="t in list">
-    <app-card
-      [title]="d.Title"
-      [description]="d.Body"
-      [type]="'video'"
-      [imagePath]="d.ImagePath"
-      [isSlider]="true"
-      [docPath]="d.docPath"
-    >
-    </app-card>
+  <div class="col">
+    <h3>Doc Slider</h3>
+    <app-image-slider
+      [contentType]="'document'"
+      [data]="docs"
+    ></app-image-slider>
   </div>
 </div>
+
+
+  <!-- Grid -->
+  <div class="row">
+    
+    <div class="col-md-4 col-lg-3 mb-3" *ngFor="let t of list">
+      <app-card
+        [title]="d.Title"
+        [description]="d.Body"
+        [type]="'video'"
+        [imagePath]="d.ImagePath"
+        [isSlider]="true"
+        [docPath]="d.docPath"
+      >
+      </app-card>
+    </div>
+  </div>
+</div>
+
+
