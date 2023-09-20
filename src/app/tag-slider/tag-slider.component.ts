@@ -3,7 +3,7 @@ import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, Output, EventE
 @Component({
   selector: 'app-tag-slider',
   templateUrl: './tag-slider.component.html',
-  styleUrls: ['./tag-slider.component.scss']
+  styleUrls: ['./tag-slider.component.css']
 })
 export class TagSliderComponent implements AfterViewInit,OnChanges {
   @ViewChild('tabsList') tabsList!: ElementRef;
@@ -12,6 +12,8 @@ export class TagSliderComponent implements AfterViewInit,OnChanges {
   showLeftArrow = false;
   showRightArrow = false;
 
+  dragging = false;
+  isDragging = false;
   @Input('tags') tags:string[] = [];
   @Input('selectedTag') selectedTag:string = '';
   @Output('onSelect') onSelect = new EventEmitter<string>();
@@ -99,7 +101,25 @@ export class TagSliderComponent implements AfterViewInit,OnChanges {
     }
   }
 
-  
+  onMousemove(event:MouseEvent){
+    if (!this.dragging) return;
+    this.isDragging = true;
+    this.tabsList.nativeElement.scrollLeft -= event.movementX;
+  };
+
+  onMousedown(event:MouseEvent) {
+    this.dragging = true;
+  }
+
+
+  @HostListener('document:mouseup', ['$event'])
+  onMouseUp(event: MouseEvent) {
+    if (this.el.nativeElement.contains(event.target)) {
+      this.dragging = false;
+      this.isDragging = false;
+    }
+  }
+
 
 }
 

@@ -22,8 +22,9 @@
     </div>
 
     <ul
-      #tabsList
-      (scroll)="manageIcons()">
+      #sliderList
+      (scroll)="manageIcons()"
+      (mousemove)="onMousemove($event)" (mousedown)="onMousedown($event)"  [class.dragging]="isDragging">
       <li *ngFor="let d of data; let i = index" #sliderElements (click)="selectCard(i)">
         <app-card
           [title]="d.Title"

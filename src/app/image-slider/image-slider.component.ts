@@ -8,12 +8,13 @@ import {
   QueryList,
   SimpleChanges,
   OnChanges,
+  HostListener,
 } from '@angular/core';
 
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.scss'],
+  styleUrls: ['./image-slider.component.css'],
 })
 export class ImageSliderComponent implements AfterViewInit,OnChanges {
   @ViewChild('sliderList') sliderList!: ElementRef;
@@ -26,6 +27,8 @@ export class ImageSliderComponent implements AfterViewInit,OnChanges {
   showRightArrow = false;
   activeTabIndex: number = 0;
 
+  dragging = false;
+  isDragging = false;
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit(): void {
@@ -113,5 +116,24 @@ export class ImageSliderComponent implements AfterViewInit,OnChanges {
 
   openTutorial(d: any) {
     window.open(d.YoutubeUrl, '_blank');
+  }
+
+  onMousemove(event:MouseEvent){
+    if (!this.dragging) return;
+    this.isDragging = true;
+    this.sliderList.nativeElement.scrollLeft -= event.movementX;
+  };
+
+  onMousedown(event:MouseEvent) {
+    this.dragging = true;
+  }
+
+
+  @HostListener('document:mouseup', ['$event'])
+  onMouseUp(event: MouseEvent) {
+    if (this.el.nativeElement.contains(event.target)) {
+      this.dragging = false;
+      this.isDragging = false;
+    }
   }
 }

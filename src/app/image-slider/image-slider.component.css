@@ -31,7 +31,13 @@
 }
 
 .scrollable-tabs-container ul.dragging {
+  scroll-snap-type: none;
   scroll-behavior: auto;
+}
+
+.scrollable-tabs-container ul.dragging li {
+  cursor: grab;
+  user-select: none;
 }
 
 .scrollable-tabs-container ul::-webkit-scrollbar {
@@ -49,7 +55,7 @@
   padding: 0 10px;
   pointer-events: none;
   z-index: 99;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .scrollable-tabs-container .right-arrow.active,
