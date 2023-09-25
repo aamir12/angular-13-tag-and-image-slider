@@ -1,7 +1,6 @@
 <div class="container">
-
   <!-- Tag Slider -->
-  <div class="row">
+  <div class="row mb-3">
     <div class="col">
       <h3>Tag Slider</h3>
       <app-tag-slider
@@ -13,7 +12,7 @@
   </div>
 
   <!-- Image Slider -->
-  <div class="row">
+  <div class="row mb-3">
     <div class="col">
       <h3>Image Slider</h3>
       <app-image-slider
@@ -23,23 +22,22 @@
     </div>
   </div>
 
-<!-- Doc Slider -->
+  <!-- Doc Slider -->
 
-<div class="row">
-  <div class="col">
-    <h3>Doc Slider</h3>
-    <app-image-slider
-      [contentType]="'document'"
-      [data]="docs"
-    ></app-image-slider>
+  <div class="row mb-3">
+    <div class="col">
+      <h3>Doc Slider</h3>
+      <app-image-slider
+        [contentType]="'document'"
+        [data]="docs"
+      ></app-image-slider>
+    </div>
   </div>
-</div>
-
 
   <!-- Grid -->
-  <div class="row">
-    
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let t of list">
+
+  <div class="card-list">
+    <div class="card-item" *ngFor="let t of list">
       <app-card
         [title]="d.Title"
         [description]="d.Body"
@@ -51,5 +49,3 @@
     </div>
   </div>
 </div>
-
-
