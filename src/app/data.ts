@@ -27,13 +27,6 @@ export const videos = [
     // docPath: 'https://dummyimage.com/600x400/000/fff',
     YoutubeUrl: 'https://www.youtube.com/watch?v=nS5qbSJLGx8',
   },
-  {
-    Title: 'Title5',
-    Body: 'Body5',
-    ImagePath: 'https://dummyimage.com/600x400/000/fff',
-    // docPath: 'https://dummyimage.com/600x400/000/fff',
-    YoutubeUrl: 'https://www.youtube.com/watch?v=nS5qbSJLGx8',
-  },
 ];
 
 export const docs = [
