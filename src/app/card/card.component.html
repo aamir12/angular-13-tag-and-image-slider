@@ -1,15 +1,14 @@
 <div
-  class="card border-0 bg-transparent px-2 h-100 d-flex flex-column"
+  class="card border-0 bg-transparent px-0 h-100 d-flex flex-column"
   [class.video]="type === 'video'"
   [class.slider]="isSlider"
-  
 >
   <div class="position-relative" (click)="onClick()">
     <!-- default image -->
     <img
       *ngIf="!imagePath"
       class="card-img-top rounded defaultSize"
-      src="https://dummyimage.com/263x224&text=No%20Image"
+      src="https://dummyimage.com/300x180&text=No%20Image"
     />
 
     <img
@@ -27,19 +26,13 @@
   </div>
 
   <div class="card-body px-0">
-    <h5
-      class="card-title fs-6"
-      *ngIf="title"
-      [class.text-truncate]="isSlider"
-      [class.text-wrap]="!isSlider"
-    >
+    <h5 class="card-title fs-6 text-truncate" *ngIf="title" [title]="title">
       {{ title }}
     </h5>
     <p
-      class="card-text fw-normal lh-base"
+      class="card-text fw-normal lh-base text-truncate"
       *ngIf="description"
-      [class.text-truncate]="isSlider"
-      [class.text-wrap]="!isSlider"
+      [title]="description"
     >
       {{ description }}
     </p>

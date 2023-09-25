@@ -9,14 +9,20 @@ import {
   SimpleChanges,
   OnChanges,
   HostListener,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
 } from '@angular/core';
+import { Subject, debounceTime, fromEvent, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',
   styleUrls: ['./image-slider.component.css'],
 })
-export class ImageSliderComponent implements AfterViewInit,OnChanges {
+export class ImageSliderComponent
+  implements AfterViewInit, OnChanges, OnInit, OnDestroy
+{
   @ViewChild('sliderList') sliderList!: ElementRef;
   @ViewChildren('sliderElements') sliderElements!: QueryList<ElementRef>;
   @Input('data') data: any[] = [];
@@ -29,7 +35,17 @@ export class ImageSliderComponent implements AfterViewInit,OnChanges {
 
   dragging = false;
   isDragging = false;
-  constructor(private el: ElementRef) {}
+  destroyed$ = new Subject<boolean>();
+  constructor(private el: ElementRef, private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    fromEvent(window, 'resize')
+      .pipe(takeUntil(this.destroyed$), debounceTime(200))
+      .subscribe(() => {
+        console.log('Window resizing');
+        this.manageIcons();
+      });
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -38,15 +54,15 @@ export class ImageSliderComponent implements AfterViewInit,OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes['data']) {
+    if (changes['data']) {
       setTimeout(() => {
         this.manageIcons();
-      },0) 
+      }, 0);
     }
   }
 
   selectCard(index: number): void {
-    if(this.data.length === 0) {
+    if (this.data.length === 0) {
       return;
     }
     this.activeTabIndex = index;
@@ -112,22 +128,25 @@ export class ImageSliderComponent implements AfterViewInit,OnChanges {
     } else {
       this.showRightArrow = true;
     }
+
+    this.cdr.detectChanges();
   }
 
   openTutorial(d: any) {
-    window.open(d.YoutubeUrl, '_blank');
+    if (d.YoutubeUrl) {
+      window.open(d.YoutubeUrl, '_blank');
+    }
   }
 
-  onMousemove(event:MouseEvent){
+  onMousemove(event: MouseEvent) {
     if (!this.dragging) return;
     this.isDragging = true;
     this.sliderList.nativeElement.scrollLeft -= event.movementX;
-  };
-
-  onMousedown(event:MouseEvent) {
-    this.dragging = true;
   }
 
+  onMousedown(event: MouseEvent) {
+    this.dragging = true;
+  }
 
   @HostListener('document:mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
@@ -135,5 +154,10 @@ export class ImageSliderComponent implements AfterViewInit,OnChanges {
       this.dragging = false;
       this.isDragging = false;
     }
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }
