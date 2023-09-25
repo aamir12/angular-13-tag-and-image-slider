@@ -9,10 +9,8 @@ import { docs, tags, videos } from './data';
 export class TableOverviewExample implements OnInit {
   tags: string[] = [];
 
-  videos:any[] = [];
-  docs:any[] = [];
-
-  
+  videos: any[] = [];
+  docs: any[] = [];
 
   d = {
     Title: 'Title4',
@@ -29,10 +27,10 @@ export class TableOverviewExample implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.videos = videos;
       this.tags = tags;
       this.docs = docs;
-    },2000)
+    }, 2000);
   }
 }

@@ -11,7 +11,12 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [TableOverviewExample, TagSliderComponent, ImageSliderComponent, CardComponent],
+  declarations: [
+    TableOverviewExample,
+    TagSliderComponent,
+    ImageSliderComponent,
+    CardComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
