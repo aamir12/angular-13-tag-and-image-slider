@@ -28,6 +28,13 @@
   width: 300px;
 }
 
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 675px) {
   .card {
     width: 300px;

@@ -1,21 +1,21 @@
 export const videos = [
   {
     Title: 'Title1 lorem ipsum content greater than text',
-    Body: 'Body1',
+    Body: 'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged',
     ImagePath: 'https://dummyimage.com/600x400/000/fff',
 
     YoutubeUrl: 'https://www.youtube.com/watch?v=nS5qbSJLGx8',
   },
   {
     Title: 'Title2',
-    Body: 'Body2',
+    Body: 'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
     ImagePath: 'https://dummyimage.com/600x400/000/fff',
     // docPath: 'https://dummyimage.com/600x400/000/fff',
     YoutubeUrl: 'https://www.youtube.com/watch?v=nS5qbSJLGx8',
   },
   {
     Title: 'Title3',
-    Body: 'Body3',
+    Body: 'when an unknown printer took a galley of type and scrambled it.',
     ImagePath: 'https://dummyimage.com/600x400/000/fff',
     // docPath: 'https://dummyimage.com/600x400/000/fff',
     YoutubeUrl: 'https://www.youtube.com/watch?v=nS5qbSJLGx8',
